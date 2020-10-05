@@ -9,8 +9,6 @@ AMbot.aliases = new Discord.Collection();
 //For commands module initiation
 require("./function")(AMbot);
 
-
-
 module.exports = {
     AMbot: AMbot,
     game: game
