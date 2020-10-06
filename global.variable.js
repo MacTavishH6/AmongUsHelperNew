@@ -22,6 +22,9 @@ class Game {
         this.inGame = 0;
         this.Player = [];
     }
+    undoKill(player) {
+        this.Player.pop(player);
+    }
 }
 
 var game = new Game();

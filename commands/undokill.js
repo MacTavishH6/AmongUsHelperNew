@@ -14,22 +14,21 @@ module.exports.run = async(bot, msg, args, voice, game) => {
         }
         if (args.length > 2) {
             var player = msg.mentions.members.forEach(x => {
-                x.voice.setMute(true);
-                game.kill(x.id);
-                msg.channel.send('<@' + x.id + '> is killed!');
+                x.voice.setMute(false);
+                game.undoKill(x.id);
+                msg.channel.send('<@' + x.id + '> is resurrected! XD');
             });
         } else {
             var player = msg.mentions.members.first().id;
-            msg.mentions.members.first().voice.setMute(true);
-            game.kill(x.id);
-            msg.channel.send('<@' + player + '> is killed!');
-            configGame.config.Player.push(player);
+            msg.mentions.members.first().voice.setMute(false);
+            game.undoKill(x.id);
+            msg.channel.send('<@' + player + '> is resurrected! XD');
         }
     } else if (msg.channel.permissionsFor(bot.user).has(bot.user)) return msg.channel.send(":negative_squared_cross_mark: Please give me permission to see Voice Channel and Mute Member ;)");
     else return msg.author.send("Give me permission to send message please! ;)");
 };
 
 module.exports.help = {
-    name: "kill",
-    aliases: ["k"]
+    name: "undokill",
+    aliases: ["uk"]
 };

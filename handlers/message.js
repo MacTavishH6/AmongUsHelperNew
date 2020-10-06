@@ -1,5 +1,6 @@
 const { AMbot, game } = require('../index');
 const config = require("../config.json");
+const { Guild } = require('discord.js');
 
 AMbot.on('message', async msg => {
     if (msg.author.bot) return;
