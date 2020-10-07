@@ -12,7 +12,7 @@ module.exports.run = async(bot, msg, args, voice, game) => {
         if (!msg.mentions.members.first()) {
             return msg.channel.send("You have to @ one player!");
         }
-        if (args.length > 2) {
+        if (args.length > 1) {
             var player = msg.mentions.members.forEach(x => {
                 x.voice.setMute(false);
                 game.undoKill(x.id);

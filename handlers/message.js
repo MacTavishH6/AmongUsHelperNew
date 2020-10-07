@@ -12,7 +12,12 @@ AMbot.on('message', async msg => {
     let param;
     if (args.includes(" ")) {
         cmd = args.substring(0, args.indexOf(" ")).toLowerCase().trim();
-        param = args.slice(cmd.length).trim();
+        param = args.slice(cmd.length).trim().toLowerCase();
+        if (param.includes(' ')) {
+            var temp = param.split(' ');
+            param = [];
+            param = temp;
+        }
     } else cmd = args.toLowerCase().trim();
 
     let command;
