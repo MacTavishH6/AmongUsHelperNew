@@ -19,7 +19,7 @@ module.exports.run = async(bot, msg, arg, voice, game) => {
         let flag = true;
         member.forEach(x => {
             flag = true;
-            if (game.Player.includes(x.id) || x.roles.find(r => r.name === "BOT")) flag = false;
+            if (game.Player.includes(x.id) || x.user.bot) flag = false;
             if (flag == true) {
                 x.voice.setMute(true);
             }
