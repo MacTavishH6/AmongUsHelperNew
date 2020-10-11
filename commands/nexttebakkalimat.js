@@ -8,8 +8,12 @@ module.exports.run = async(bot, msg, arg, voice, game) => {
         }
         var player = msg.author.id;
         let member = voice.channel.members;
+        var botCounter = 0;
+        member.forEach(x => {
+            if (x.user.bot) botCounter++;
+        });
         let DonePlayer = game.getDonePlayer();
-        if (DonePlayer + 1 == member.size) return msg.channel.send("Please type \"!ftk\"!");
+        if ((DonePlayer + 1) == (member.size - botCounter)) return msg.channel.send("Please type \"!ftk\"!");
         let nextPlayer = member.find(y => y.nickname != null && y.nickname.startsWith((DonePlayer + 2).toString()));
         nextPlayer.voice.setMute(false);
         nextPlayer.voice.setDeaf(false);
@@ -18,7 +22,7 @@ module.exports.run = async(bot, msg, arg, voice, game) => {
         game.nextPlayer();
         setTimeout(() => {
             msg.channel.send("<@" + player + ">Next Please!");
-        }, 60000);
+        }, 30000);
     } else if (msg.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) return msg.channel.send(":negative_squared_cross_mark: Please give me permission to see Voice Channel, Deafen Member, and Manage Nickname ;)");
     else return msg.author.send("Give me permission to send message please! ;)");
 };

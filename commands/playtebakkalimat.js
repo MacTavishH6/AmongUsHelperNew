@@ -46,7 +46,7 @@ module.exports.run = async(bot, msg, arg, voice, game) => {
         game.sortPlayer();
         setTimeout(() => {
             msg.channel.send("<@" + player + "> Next Please!");
-        }, 70000);
+        }, 35000);
     } else if (msg.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) return msg.channel.send(":negative_squared_cross_mark: Please give me permission to see Voice Channel, Deafen Member, and Manage Nickname ;)");
     else return msg.author.send("Give me permission to send message please! ;)");
 };
