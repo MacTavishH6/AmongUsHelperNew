@@ -18,23 +18,28 @@ module.exports.run = async(bot, msg, arg, voice, game) => {
         // let memberWithNick = member.filter(y => y.nickname != null);
         // console.log(memberWithNick);
         // console.log(memberWithoutNick);
+        let botCounter = 0;
         member.forEach(x => {
-            flag = true;
-            while (flag) {
-                number = Math.floor(Math.random() * Math.floor(member.size)) + 1;
-                if (!game.Player.includes(number)) {
-                    if (x.bannable) {
-                        if (x.nickname == null)
-                            x.setNickname(number.toString() + "_" + x.displayName.toString());
-                        else x.setNickname(number.toString() + "_" + x.nickname.toString());
-                    }
+            if (x.user.bot) {
+                botCounter++;
+            } else {
+                flag = true;
+                while (flag) {
+                    number = Math.floor(Math.random() * Math.floor(member.size - botCounter)) + 1;
+                    if (!game.Player.includes(number)) {
+                        if (x.bannable) {
+                            if (x.nickname == null)
+                                x.setNickname(number.toString() + "_" + x.displayName.toString());
+                            else x.setNickname(number.toString() + "_" + x.nickname.toString());
+                        }
 
-                    if (number != 1 && number != 2 && number != 3) {
-                        x.voice.setDeaf(true);
-                        x.voice.setMute(true);
+                        if (number != 1 && number != 2) {
+                            x.voice.setDeaf(true);
+                            x.voice.setMute(true);
+                        }
+                        game.kill(number);
+                        flag = false;
                     }
-                    game.kill(number);
-                    flag = false;
                 }
             }
         });
