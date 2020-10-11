@@ -5,7 +5,7 @@ module.exports.run = async(bot, msg, arg, voice, game) => {
         if (game.start == 0) return msg.channel.send("Start a game first by typing \"!ptk\"!");
         var member = voice.channel.members;
         member.forEach(x => {
-            if (x.bannable) {
+            if (x.bannable || x.user.bot) {
                 let Nickname = x.nickname.substring(x.nickname.indexOf('_') + 1);
                 x.setNickname(Nickname);
             }
