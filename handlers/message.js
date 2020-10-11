@@ -22,6 +22,9 @@ AMbot.on('message', async msg => {
 
     let command;
     if (!msg.content.startsWith(prefix)) return;
+    // msg.member.voice.channel.permissionsFor(bot.user).has("MANAGE_NICKNAMES")
+    // let member = msg.member.voice.channel.members;
+    // member.find(y => y.nickname != null && y.nickname.startsWith("M"));
     // let cmd = AMbot.commands.get(command.slice(prefix.length) || AMbot.aliases.get(cmdd => cmdd.aliases && cmdd.aliases.includes(command.slice(prefix.length))));
     let voice = msg.member.voice;
     // if (cmd) cmd.run(AMbot, msg, args, voice, start, inGame, Player, flag);

@@ -3,6 +3,7 @@ class Game {
         this.start = 0;
         this.inGame = 0;
         this.Player = [];
+        this.DonePlayer = [];
     }
     startGame() {
         this.start = 1;
@@ -21,9 +22,21 @@ class Game {
         this.start = 0;
         this.inGame = 0;
         this.Player = [];
+        this.DonePlayer = [];
     }
     undoKill(player) {
         this.Player.pop(player);
+    }
+    sortPlayer() {
+        this.Player.sort();
+    }
+    getDonePlayer() {
+        let lastPlayer = this.Player.shift();
+        this.Player.unshift(lastPlayer);
+        return lastPlayer;
+    }
+    nextPlayer() {
+        this.Player.shift();
     }
 }
 
