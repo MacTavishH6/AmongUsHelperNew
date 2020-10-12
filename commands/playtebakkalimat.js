@@ -7,7 +7,7 @@ module.exports.run = async(bot, msg, arg, voice, game, config) => {
         if (game.start == 1 && game.inGame == 1) return msg.channel.send("Game is already start or you not yet finished the game Please type \"!ftk\"");
         let member = voice.channel.members;
         let number, flag;
-        let newMember = member.filter(y => !(y.nickname != null && y.nickname.substring(0, y.nickname.indexOf("_") + 1).toLowerCase() == "mod_"));
+        let newMember = member.filter(y => !y.user.bot && !(y.nickname != null && y.nickname.substring(0, y.nickname.indexOf("_") + 1).toLowerCase() == "mod_"));
         if (game.start == 0) {
             if (newMember.size <= 2) {
                 return msg.channel.send("Not enough Player!");
