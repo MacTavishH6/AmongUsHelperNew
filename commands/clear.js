@@ -1,6 +1,6 @@
 const discord = require('discord.js');
 
-module.exports.run = async(bot, msg, arg, voice, game) => {
+module.exports.run = async(bot, msg, arg, voice, game, config) => {
     if (msg.channel.permissionsFor(bot.user).has("READ_MESSAGE_HISTORY") && msg.channel.permissionsFor(bot.user).has("MANAGE_MESSAGES")) {
         if (!arg || arg.includes(" ") || isNaN(arg)) {
             msg.channel.bulkDelete(1);

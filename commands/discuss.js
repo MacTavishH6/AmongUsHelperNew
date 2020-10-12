@@ -1,6 +1,6 @@
 const discord = require('discord.js');
 
-module.exports.run = async(bot, msg, arg, voice, game) => {
+module.exports.run = async(bot, msg, arg, voice, game, config) => {
     if (msg.member.voice.channel.permissionsFor(bot.user).has("VIEW_CHANNEL") && msg.member.voice.channel.permissionsFor(bot.user).has("MUTE_MEMBERS")) {
         if (!voice.channelID) return msg.channel.send("You must be in a voice channel!");
         if (game.start == 0) return msg.channel.send("Start a game first by typing \"!p\"!");

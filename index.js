@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require("./config.json");
+var config = require("./config.json");
 const fs = require("fs");
 const { game } = require("./global.variable.js");
 
@@ -11,5 +11,6 @@ require("./function")(AMbot);
 
 module.exports = {
     AMbot: AMbot,
-    game: game
+    game: game,
+    config: config
 }

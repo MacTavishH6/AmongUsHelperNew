@@ -1,6 +1,6 @@
 const discord = require('discord.js');
 
-module.exports.run = async(bot, msg, arg, voice, game) => {
+module.exports.run = async(bot, msg, arg, voice, game, config) => {
     if (msg.channel.permissionsFor(bot.user).has("EMBED_LINKS") && msg.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
         const textHelp = {
                 title: "Among Us Helper by MacTavishH6",

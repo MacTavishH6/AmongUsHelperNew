@@ -1,5 +1,4 @@
-const { AMbot, game } = require('../index');
-const config = require("../config.json");
+var { AMbot, game, config } = require('../index');
 const { Guild } = require('discord.js');
 
 AMbot.on('message', async msg => {
@@ -24,6 +23,7 @@ AMbot.on('message', async msg => {
     if (!msg.content.startsWith(prefix)) return;
     // msg.member.voice.channel.permissionsFor(bot.user).has("MANAGE_NICKNAMES")
     // let member = msg.member.voice.channel.members;
+    // member.first().nickname.substring(0, member.first().nickname.indexOf("_"))
     // member.find(y => y.nickname != null && y.nickname.startsWith("M"));
     // let cmd = AMbot.commands.get(command.slice(prefix.length) || AMbot.aliases.get(cmdd => cmdd.aliases && cmdd.aliases.includes(command.slice(prefix.length))));
     let voice = msg.member.voice;
@@ -34,5 +34,5 @@ AMbot.on('message', async msg => {
     // console.log(param);
     // console.log("cmd = " + cmd);
     // console.log("command = " + command);
-    command.run(AMbot, msg, param, voice, game);
+    command.run(AMbot, msg, param, voice, game, config);
 })
