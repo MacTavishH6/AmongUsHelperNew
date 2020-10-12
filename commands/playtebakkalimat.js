@@ -6,13 +6,13 @@ module.exports.run = async(bot, msg, arg, voice, game, config) => {
         if (game.inGame == 1) return msg.channel.send("Game already started!");
         if (game.start == 1 && game.inGame == 1) return msg.channel.send("Game is already start or you not yet finished the game Please type \"!ftk\"");
         let member = voice.channel.members;
-        let number, flag;
+        let number, flag, player;
         let newMember = member.filter(y => !y.user.bot && !(y.nickname != null && y.nickname.substring(0, y.nickname.indexOf("_") + 1).toLowerCase() == "mod_"));
         if (game.start == 0) {
             if (newMember.size <= 2) {
                 return msg.channel.send("Not enough Player!");
             }
-            var player = msg.author.id;
+            player = msg.author.id;
             msg.channel.send("<@" + player + "> Start the game!");
             game.startGame();
         }
