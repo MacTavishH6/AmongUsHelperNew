@@ -10,7 +10,7 @@ module.exports.run = async(bot, msg, arg, voice, game, config) => {
         let member = voice.channel.members;
         let newMember = member.filter(y => !y.user.bot && !(y.nickname != null && y.nickname.substring(0, y.nickname.indexOf("_") + 1).toLowerCase() == "mod_"));
         let DonePlayer = game.getDonePlayer();
-        if (isNaN(arg) || (DonePlayer + 1) > (newMember.size)) return msg.channel.send("Please type \"!btk\"!");
+        if (DonePlayer + 1 >= newMember.size) return msg.channel.send("Please type \"!btk\"!");
         msg.channel.send("Next player!");
         let nextPlayer = member.find(y => y.nickname != null && y.nickname.startsWith((DonePlayer + 2).toString()));
         nextPlayer.voice.setMute(false);
